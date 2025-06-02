@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Contactează-mă</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #f2f2f2;
+    }
+    h2 {
+      color: #333;
+    }
+    a {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 25px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      width: 250px;
+      transition: background 0.3s;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Alege cum vrei să mă contactezi</h2>
+  <a href="tel:+4915901794804">📞 Sună-mă</a>
+  <a href="https://wa.me/4915901794804" target="_blank">💬 WhatsApp</a>
+  <a href="https://www.facebook.com/share/1EtNxjwqvk/" target="_blank">💬 Messenger</a>
+</body>
+</html>

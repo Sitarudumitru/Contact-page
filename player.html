@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player modern – Radio Pforzheim FM</title>
+  <meta name="theme-color" content="#E03131"/>
+  <style>
+    :root { --bg:#0f0f14; --card:#16161d; --border:#23232b; --fg:#f8f9fa; --muted:#b6bcc6; --accent:#E03131; }
+    html, body { height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 22px; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; text-align:center;}
+    h1 { margin:0 0 6px; font-size:1.4rem; }
+    .controls { display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:10px; }
+    button { background:var(--accent); color:#fff; border:none; border-radius:999px; padding:12px 18px; font-weight:700; cursor:pointer; }
+    input[type=range] { width:220px; }
+    .warn { margin-top:14px; color:#ffb4b4; }
+    a { color:#9bc9ff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Player modern</h1>
+      <p>Redare directă prin HTML5 audio.</p>
+      <div class="controls">
+        <button id="play">▶️ Play</button>
+        <button id="stop" style="background:#2d2d36">⏹ Stop</button>
+        <label>Volum <input id="vol" type="range" min="0" max="1" step="0.01" value="0.9"></label>
+      </div>
+      <p id="msg" class="warn"></p>
+    </div>
+  </div>
+  <audio id="audio" preload="none" src="http://sapircast.caster.fm:10435/9pLwL"></audio>
+  <script>
+    const a = document.getElementById('audio');
+    const playBtn = document.getElementById('play');
+    const stopBtn = document.getElementById('stop');
+    const vol = document.getElementById('vol');
+    const msg = document.getElementById('msg');
+
+    function explainMixedContent() {
+      msg.innerHTML = 'Dacă nu pornește: browserul a blocat streamul ne-HTTPS. Deschide <a href=\'https://radiopforzheim.ismyradio.com\' target=\'_blank\'>playerul Caster.fm</a> sau folosește link HTTPS al streamului.';
+    }
+
+    playBtn.addEventListener('click', async () => {
+      try {
+        await a.play();
+        msg.textContent = '';
+      } catch (e) {
+        explainMixedContent();
+        console.error(e);
+      }
+    });
+    stopBtn.addEventListener('click', () => { a.pause(); a.currentTime = 0; });
+    vol.addEventListener('input', () => { a.volume = +vol.value; });
+
+    // In many browsers HTTPS page can't play HTTP streams -> show info early
+    if (location.protocol === 'https:') { explainMixedContent(); }
+  </script>
+</body>
+</html>

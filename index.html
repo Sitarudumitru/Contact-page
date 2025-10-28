@@ -38,54 +38,9 @@
       </div>
       <audio controls preload="none" src="https://radiopforzheim.sitarudumitru.workers.dev/"></audio>
       <p class="hint">Redare securizată prin HTTPS (Cloudflare Proxy). Dacă nu pornește imediat, apasă Play.</p>
-
-      <div class="donate">
-        <h2>Susține Radio Pforzheim FM</h2>
-        <p>Acest post de radio este creat din pasiune pentru muzică și oameni.</p>
-        <p>Dacă dorești să ajuți la menținerea serverului, poți contribui printr-o donație.</p>
-        <a class="btn" href="https://paypal.me/sitarudumitru" target="_blank" rel="noopener">❤️ Donează pe PayPal</a>
-        <p class="founder">Acest radio a fost realizat cu ajutorul și pasiunea lui <b>Sitaru Mitică</b>.</p>
-      </div>
-
-      <div class="contact">
-        <h2>Dedică sau promovare</h2>
-        <p>Vrei o dedicație sau să difuzăm o reclamă? Scrie-ne direct pe WhatsApp.</p>
-        <a class="btn" href="https://wa.me/4915901794804" target="_blank" rel="noopener">💬 WhatsApp: 01590 179 4804</a>
-        <span class="pill">Telefon: 01590 179 4804</span>
-      </div>
     </div>
     <footer>Instalează aplicația: meniu (⋮) → „Add to Home screen”.</footer>
   </div>
-
   <div class="banner">💡 Pentru cea mai bună redare, deschide aplicația în <b>Chrome (Android)</b> sau <b>Safari (iPhone)</b>.</div>
-
-  <script>
-    (function () {
-      const ua = navigator.userAgent || "";
-      const isFB = ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("FB_IAB");
-      const isIG = ua.includes("Instagram");
-      if (isFB || isIG) {
-        const wrap = document.createElement("div");
-        wrap.style.cssText = "position:fixed;inset:0;background:#0f0f14;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;z-index:9999;";
-        wrap.innerHTML = `
-          <div>
-            <h2 style="margin:0 0 12px">Deschide în browserul telefonului</h2>
-            <p>Apasă butonul de mai jos pentru a deschide în Chrome/Safari și a instala aplicația.</p>
-            <a href="intent://sitarudumitru.github.io/Contact-page/#Intent;scheme=https;package=com.android.chrome;end"
-               style="display:inline-block;background:#E03131;padding:12px 18px;border-radius:999px;color:#fff;font-weight:700;text-decoration:none;margin-top:8px">
-               Deschide în Chrome
-            </a>
-            <p style="opacity:.7;margin-top:10px">Pe iPhone: Share → Open in Safari</p>
-          </div>`;
-        document.body.appendChild(wrap);
-      }
-    })();
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').catch(console.error);
-      });
-    }
-  </script>
 </body>
 </html>

@@ -3,92 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Radio Pforzheim – Romania FM</title>
+  <title>Radio Pforzheim FM</title>
   <meta name="theme-color" content="#E03131"/>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
-    :root { --bg: #0f0f14; --fg:#f8f9fa; --accent:#E03131; }
-    html, body { height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
-    .wrap { max-width: 720px; margin: 0 auto; padding: 24px; display:flex; flex-direction:column; gap:16px; align-items:center; }
-    .card { width:100%; background:#16161d; border:1px solid #23232b; border-radius:16px; padding:20px; box-sizing:border-box; }
-    h1 { margin:0; font-size:1.4rem; text-align:center; }
-    .logo { width:96px; height:96px; border-radius:20px; display:block; margin:8px auto 0; }
-    .controls { display:flex; gap:12px; align-items:center; justify-content:center; margin-top:10px; flex-wrap:wrap; }
-    button { background:var(--accent); color:white; border:none; border-radius:999px; padding:12px 20px; font-weight:600; cursor:pointer; font-size:1rem; }
-    button.secondary { background:#2b2b35; }
-    .row { display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; }
-    input[type=range] { width:220px; }
-    .hint { opacity:.7; font-size:.9rem; text-align:center; }
+    :root { --bg:#0f0f14; --card:#16161d; --border:#23232b; --fg:#f8f9fa; --muted:#b6bcc6; --accent:#E03131; }
+    html, body { height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 22px; display:flex; flex-direction:column; gap:16px; }
+    .logo { width:96px; height:96px; border-radius:20px; display:block; margin:0 auto; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; }
+    h1 { margin:10px 0 0; font-size:1.6rem; text-align:center; }
+    iframe { width:100%; height:160px; border:none; border-radius:12px; background:#0b0b10; }
+    .hint { opacity:.8; font-size:.95rem; text-align:center; margin:8px 0 0; }
+    .donate, .contact { margin-top:14px; text-align:center; }
+    .donate h2, .contact h2 { margin:0 0 8px; font-size:1.2rem; }
+    .donate p, .contact p { margin:6px 0; color:var(--muted); }
+    .btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 18px; border-radius:999px; font-weight:700; text-decoration:none; margin:8px 6px 0; }
+    .btn.secondary { background:#2d2d36; }
+    .pill { display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); color:var(--muted); font-size:.9rem; margin-top:6px;}
     footer { opacity:.6; text-align:center; font-size:.85rem; margin-top:8px; }
-    a { color:#9bc9ff; text-decoration:none; }
+    a { color:#9bc9ff; }
+    .banner { position:fixed; bottom:0; left:0; right:0; background:#E03131; color:#fff; text-align:center; font-size:.95rem; padding:10px; z-index:1000; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <img class="logo" src="icons/icon-192.png" alt="Radio Pforzheim">
+    <img class="logo" src="icons/icon-192.png" alt="Radio Pforzheim FM">
     <div class="card">
-      <h1>Radio Pforzheim – Romania FM</h1>
-      <div class="controls">
-        <button id="playBtn">▶️ Play</button>
-        <button id="stopBtn" class="secondary">⏹ Stop</button>
+      <h1>Radio Pforzheim FM</h1>
+      <iframe title="Player" src="https://radiopforzheim.ismyradio.com"></iframe>
+      <p class="hint">Dacă playerul nu pornește instant, atinge butonul ▶️ din fereastra de mai sus.</p>
+
+      <div class="donate">
+        <h2>Susține Radio Pforzheim FM</h2>
+        <p>Acest post de radio este creat din pasiune pentru muzică și oameni.</p>
+        <p>Dacă dorești să ajuți la menținerea serverului, poți contribui printr-o donație.</p>
+        <a class="btn" href="https://paypal.me/sitarudumitru" target="_blank" rel="noopener">❤️ Donează pe PayPal</a>
+        <p class="founder">Acest radio a fost realizat cu ajutorul și pasiunea lui <b>Sitaru Mitică</b>.</p>
       </div>
-      <div class="row">
-        <label for="vol">Volum</label>
-        <input id="vol" type="range" min="0" max="1" step="0.01" value="0.9">
+
+      <div class="contact">
+        <h2>Dedică sau promovare</h2>
+        <p>Vrei o dedicație sau să difuzăm o reclamă? Scrie-ne direct pe WhatsApp.</p>
+        <a class="btn" href="https://wa.me/4915901794804" target="_blank" rel="noopener">💬 WhatsApp: 01590 179 4804</a>
+        <span class="pill">Telefon: 01590 179 4804</span>
       </div>
-      <p class="hint">Dacă nu pornește, atinge butonul <b>Play</b> (autoplay este blocat pe mobil).</p>
     </div>
-    <footer>Ascultă-ne oriunde. Adaugă pe ecranul de pornire pentru o experiență ca în aplicație.</footer>
+    <footer>Instalează aplicația: meniu (⋮) → „Add to Home screen”.</footer>
   </div>
 
-  <audio id="player" preload="none" src="http://sapircast.caster.fm:10435/9pLwL" crossorigin="anonymous"></audio>
+  <div class="banner">💡 Pentru cea mai bună redare, deschide aplicația în <b>Chrome (Android)</b> sau <b>Safari (iPhone)</b>.</div>
+
   <script>
-    // Register service worker
+    (function () {
+      const ua = navigator.userAgent || "";
+      const isFB = ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("FB_IAB");
+      const isIG = ua.includes("Instagram");
+      if (isFB || isIG) {
+        const wrap = document.createElement("div");
+        wrap.style.cssText = "position:fixed;inset:0;background:#0f0f14;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;z-index:9999;";
+        wrap.innerHTML = `
+          <div>
+            <h2 style="margin:0 0 12px">Deschide în browserul telefonului</h2>
+            <p>Apasă butonul de mai jos pentru a deschide în Chrome/Safari și a instala aplicația.</p>
+            <a href="intent://sitarudumitru.github.io/Contact-page/#Intent;scheme=https;package=com.android.chrome;end"
+               style="display:inline-block;background:#E03131;padding:12px 18px;border-radius:999px;color:#fff;font-weight:700;text-decoration:none;margin-top:8px">
+               Deschide în Chrome
+            </a>
+            <p style="opacity:.7;margin-top:10px">Pe iPhone: Share → Open in Safari</p>
+          </div>`;
+        document.body.appendChild(wrap);
+      }
+    })();
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js').catch(console.error);
       });
     }
-
-    const player = document.getElementById('player');
-    const playBtn = document.getElementById('playBtn');
-    const stopBtn = document.getElementById('stopBtn');
-    const vol = document.getElementById('vol');
-
-    let isPlaying = false;
-
-    function updateBtn() {
-      playBtn.textContent = isPlaying ? '⏸ Pauză' : '▶️ Play';
-    }
-
-    playBtn.addEventListener('click', async () => {
-      if (!isPlaying) {
-        try {
-          await player.play();
-          isPlaying = true;
-          updateBtn();
-        } catch (e) {
-          alert('Apasă din nou Play. Unele browsere cer interacțiune înainte de redare.');
-          console.error(e);
-        }
-      } else {
-        player.pause();
-        isPlaying = false;
-        updateBtn();
-      }
-    });
-
-    stopBtn.addEventListener('click', () => {
-      player.pause();
-      player.currentTime = 0;
-      isPlaying = false;
-      updateBtn();
-    });
-
-    vol.addEventListener('input', () => {
-      player.volume = parseFloat(vol.value);
-    });
   </script>
 </body>
 </html>

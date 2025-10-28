@@ -15,14 +15,13 @@
     button { background:var(--accent); color:#fff; border:none; border-radius:999px; padding:12px 18px; font-weight:700; cursor:pointer; }
     input[type=range] { width:220px; }
     .warn { margin-top:14px; color:#ffb4b4; }
-    a { color:#9bc9ff; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
       <h1>Player modern</h1>
-      <p>Redare directă prin HTML5 audio.</p>
+      <p>Redare directă prin HTML5 audio (HTTPS securizat).</p>
       <div class="controls">
         <button id="play">▶️ Play</button>
         <button id="stop" style="background:#2d2d36">⏹ Stop</button>
@@ -31,7 +30,7 @@
       <p id="msg" class="warn"></p>
     </div>
   </div>
-  <audio id="audio" preload="none" src="http://sapircast.caster.fm:10435/9pLwL"></audio>
+  <audio id="audio" preload="none" src="https://radiopforzheim.sitarudumitru.workers.dev/"></audio>
   <script>
     const a = document.getElementById('audio');
     const playBtn = document.getElementById('play');
@@ -39,24 +38,17 @@
     const vol = document.getElementById('vol');
     const msg = document.getElementById('msg');
 
-    function explainMixedContent() {
-      msg.innerHTML = 'Dacă nu pornește: browserul a blocat streamul ne-HTTPS. Deschide <a href=\'https://radiopforzheim.ismyradio.com\' target=\'_blank\'>playerul Caster.fm</a> sau folosește link HTTPS al streamului.';
-    }
-
     playBtn.addEventListener('click', async () => {
       try {
         await a.play();
         msg.textContent = '';
       } catch (e) {
-        explainMixedContent();
+        msg.textContent = 'Nu s-a putut porni redarea. Încercați din nou.';
         console.error(e);
       }
     });
     stopBtn.addEventListener('click', () => { a.pause(); a.currentTime = 0; });
     vol.addEventListener('input', () => { a.volume = +vol.value; });
-
-    // In many browsers HTTPS page can't play HTTP streams -> show info early
-    if (location.protocol === 'https:') { explainMixedContent(); }
   </script>
 </body>
 </html>
